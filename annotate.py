@@ -29,8 +29,8 @@ def get_romaji(sent):
     t = Tokenizer()
     readings = ""
     for token in t.tokenize(sent):
-        surface = regex.split("[\t,]", str(token).decode('utf8'))[0]
-        reading = regex.split("[\t,]", str(token).decode('utf8'))[-2]
+        surface = regex.split("[\t,]", str(token))[0]
+        reading = regex.split("[\t,]", str(token))[-2]
         reading = surface if reading == "*" else reading
         readings += reading
     romaji = romkan.to_roma(readings)
@@ -50,9 +50,10 @@ def annotate():
                     sent = clean(sent)
                     romaji = get_romaji(sent)
                     fout.write(u"{}\t{}\t{}\n".format(idx, romaji, sent))
-                except:
+                except Exception as e:
+                    print(e)
                     continue # it's okay as we have a pretty big corpus!
-                
+ 
                 if i % 1000 == 0: print(i,)
                 i += 1
 

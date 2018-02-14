@@ -29,7 +29,7 @@ def build_vocab():
         if len(romaji_sent) < hp.max_len:
             romaji_sents.append(romaji_sent)
             surface_sents.append(surface_sent)
-    
+    print(len(romaji_sents))
     # Make Romaji vocabulary
     with codecs.open('preprocessed/vocab.romaji.txt', 'w', 'utf-8') as fout:
         fout.write("E\t\nU\t\nS\t\n") #E: Empty, U: Unkown
@@ -60,6 +60,6 @@ def create_train_data():
     pickle.dump((romaji_sents, surface_sents), open('preprocessed/train.pkl', 'wb'), protocol=2)               
     
 if __name__ == '__main__':
-#     build_vocab()
+    build_vocab()
     create_train_data()
     print("Done") 

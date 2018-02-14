@@ -10,6 +10,8 @@ In this project, I examine how well neural networks can convert Roman letters in
   * janome (for morph analysis)
   * romkan (for converting kana to romaji)
 
+pip3 install distance tqdm tensorflow==1.2.0 numpy janome regex romkan
+
 ## Background
 
 <img src="images/swiftkey_ja.gif" width="200" align="right">
